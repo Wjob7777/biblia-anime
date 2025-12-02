@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-BOOK BATALHA CELESTIAL - Fascículo 1 | Miguel vs Lúcifer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #ffffff;
+            overflow-x: hidden;
+            background: #0a0a0a;
+        }
+
+        .timer-bar {
+            background: linear-gradient(90deg, #E31E24 0%, #c41519 100%);
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.1em;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(227, 30, 36, 0.5);
+        }
+
+        .timer {
+            font-size: 1.3em;
+            color: #FFD700;
+            margin-left: 10px;
+            font-weight: 900;
+        }
+
+        .social-proof {
+            background: #1a1a1a;
+            color: #ffffff;
+            padding: 12px 20px;
+            text-align: center;
+            border-bottom: 1px solid #333;
+        }
+
+        .social-proof span {
+            color: #FFD700;
+            font-weight: bold;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 3px solid #FFD700;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            font-weight: 800;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.8);
+            animation: fadeInDown 1s ease;
+            color: #ffffff;
+        }
+
+        .hero h1 .highlight {
+            color: #FFD700;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+        }
+
+        .hero .subtitle {
+            font-size: 1.5em;
+            margin-bottom: 30px;
+            opacity: 0.95;
+            animation: fadeInUp 1s ease 0.3s both;
+            color: #cccccc;
+        }
+
+        .hero .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            color: #000000;
+            padding: 20px 50px;
+            font-size: 1.3em;
+            font-weight: 900;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
+            animation: fadeInUp 1s ease 0.6s both;
+            border: 2px solid #FFD700;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+
+        .hero .cta-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.6);
+            background: linear-gradient(135deg, #FFA500 0%, #FFD700 100%);
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section {
+            padding: 80px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 50px;
+            color: #FFD700;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .benefits {
+            background: #1a1a1a;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .benefit-card {
+            background: linear-gradient(135deg, #2a2a2a 0%, #1f1f1f 100%);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+            transition: transform 0.3s ease;
+            text-align: center;
+            border: 2px solid #333;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+            border-color: #FFD700;
+        }
+
+        .benefit-icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        .benefit-card h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: #FFD700;
+        }
+
+        .benefit-card p {
+            color: #cccccc;
+        }
+
+        .products {
+            background: #0a0a0a;
+        }
+
+        .products-grid {
+            display: flex; /* Alterado para flex para centralizar o único card */
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .product-card {
+            background: #1a1a1a;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            transition: transform 0.3s ease;
+            border: 2px solid #333;
+            max-width: 400px; /* Adicionado para limitar a largura do card */
+            width: 100%;
+        }
+
+        .product-card:hover {
+            transform: scale(1.05);
+            border-color: #FFD700;
+            box-shadow: 0 15px 50px rgba(255, 215, 0, 0.3);
+        }
+
+        .product-image {
+            background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+            height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5em;
+            color: #FFD700;
+            border-bottom: 3px solid #FFD700;
+        }
+
+        .product-content {
+            padding: 30px;
+        }
+
+        .product-card h3 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            color: #FFD700;
+        }
+
+        .product-price {
+            font-size: 2.5em;
+            color: #FFD700;
+            font-weight: 900;
+            margin: 20px 0;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+
+        .product-features {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .product-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid #333;
+            color: #cccccc;
+        }
+
+        .product-features li::before {
+            content: '✓ ';
+            color: #FFD700;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .buy-button {
+            display: block;
+            width: 100%;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            color: #000000;
+            padding: 18px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 1.2em;
+            font-weight: 900;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            border: 2px solid #FFD700;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+
+        .buy-button:hover {
+            background: linear-gradient(135deg, #FFA500 0%, #FFD700 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.4);
+        }
+
+        .testimonials {
+            background: #1a1a1a;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .testimonial {
+            background: #2a2a2a;
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 5px solid #FFD700;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            line-height: 1.8;
+            color: #cccccc;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            color: #FFD700;
+        }
+
+        .guarantee {
+            background: linear-gradient(135deg, #E31E24 0%, #c41519 100%);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .guarantee h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .guarantee-badge {
+            font-size: 5em;
+            margin: 20px 0;
+        }
+
+        .faq {
+            background: #0a0a0a;
+        }
+
+        .faq-item {
+            background: #1a1a1a;
+            margin: 20px auto;
+            max-width: 800px;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.5);
+            border: 1px solid #333;
+        }
+
+        .faq-question {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #FFD700;
+            margin-bottom: 10px;
+        }
+
+        .faq-answer {
+            color: #cccccc;
+            line-height: 1.6;
+        }
+
+        .final-cta {
+            background: #1a1a1a;
+            text-align: center;
+            padding: 80px 20px;
+            border-top: 3px solid #FFD700;
+        }
+
+        .final-cta h2 {
+            font-size: 2.5em;
+            color: #FFD700;
+            margin-bottom: 20px;
+        }
+
+        footer {
+            background: #000000;
+            color: #cccccc;
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 0.9em;
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 20px rgba(255, 215, 0, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 215, 0, 0);
+            }
+        }
+
+        .product-card:nth-child(1) .buy-button {
+            animation: pulse 2s infinite;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5em;
+            }
+
+            .hero .subtitle {
+                font-size: 1.2em;
+            }
+
+            .hero .cta-button {
+                padding: 15px 30px;
+                font-size: 1.1em;
+            }
+
+            .section {
+                padding: 50px 20px;
+            }
+
+            .section-title {
+                font-size: 2em;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Barra de Urgência/Escassez -->
+    <div class="timer-bar">
+        <div class="container">
+            OFERTA RELÂMPAGO: Últimas <span id="vagas">18</span> vagas com <span class="highlight">DESCONTO ESPECIAL</span>! O tempo está acabando: <span class="timer" id="timer">00:00:00</span>
+        </div>
+    </div>
+
+    <!-- Prova Social -->
+    <div class="social-proof">
+        <div class="container">
+            <span id="viewers">42</span> pessoas estão vendo esta página agora. Não perca sua chance!
+        </div>
+    </div>
+
+    <!-- Seção Principal (Hero) -->
+    <header class="hero">
+        <div class="container">
+            <h1><span class="highlight">E-BOOK BATALHA CELESTIAL</span><br>Fascículo 1: Miguel vs Lúcifer - A Guerra Que Mudou o Universo</h1>
+            <p class="subtitle">Descubra a história épica da maior batalha entre o bem e o mal, recontada em um Mangá Bíblico de tirar o fôlego.</p>
+            
+            <!-- O placeholder de vídeo foi removido conforme solicitado -->
+
+            <a href="https://pay.hotmart.com/J103232102S" class="cta-button">QUERO O E-BOOK BATALHA CELESTIAL AGORA</a>
+            <p style="margin-top: 20px; font-size: 1.1em; color: #ccc;">Acesso vitalício e 100% digital. Leia em qualquer dispositivo.</p>
+        </div>
+    </header>
+
+    <!-- Seção de Benefícios -->
+    <section class="section benefits">
+        <div class="container">
+            <h2 class="section-title">Por Que Este E-book é Imperdível?</h2>
+            <div class="benefits-grid">
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">🎨</div>
+                    <h3>Arte Épica no Estilo Mangá</h3>
+                    <p>Ilustrações de tirar o fôlego que dão vida à batalha celestial. Uma Graphic Novel Bíblica com qualidade de classe mundial.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">📖</div>
+                    <h3>Fidelidade Bíblica</h3>
+                    <p>Histórias autênticas das Escrituras Sagradas (Apocalipse 12:7-9 e Ezequiel 28) recontadas de forma épica e envolvente.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">✨</div>
+                    <h3>Conteúdo Exclusivo</h3>
+                    <p>Explore a origem do mal, o orgulho de Lúcifer e a força da humildade de Miguel. Um estudo bíblico disfarçado de entretenimento.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">📚</div>
+                    <h3>Formato E-book</h3>
+                    <p>Acesso imediato e vitalício. Baixe e leia em seu smartphone, tablet ou computador. Perfeito para a nova geração.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Produtos/Oferta - Apenas o Fascículo 1 (E-book) -->
+    <section class="section products" id="produtos">
+        <div class="container">
+            <h2 class="section-title">Garanta Seu E-book Fascículo 1 Agora</h2>
+            <div class="products-grid">
+                
+                <!-- Produto Principal (E-book Fascículo 1) -->
+                <div class="product-card">
+                    <div class="product-image">⚡</div>
+                    <div class="product-content">
+                        <h3>E-BOOK BATALHA CELESTIAL</h3>
+                        <p style="font-size: 1.2em; color: #ccc; margin-bottom: 10px;">Fascículo 1: Miguel vs Lúcifer</p>
+                        <p class="product-price">R$ 19,90</p>
+                        <ul class="product-features">
+                            <li>E-book Completo em Alta Qualidade (Mangá Bíblico)</li>
+                            <li>História Épica: Miguel vs Lúcifer</li>
+                            <li>Acesso Vitalício e Ilimitado</li>
+                            <li>Leia em Qualquer Dispositivo</li>
+                            <li>Download Imediato Após a Compra</li>
+                            <li>Sem Publicidades ou Interrupções</li>
+                        </ul>
+                        <a href="https://pay.hotmart.com/J103232102S" class="buy-button">COMPRAR AGORA - R$ 19,90</a>
+                    </div>
+                </div>
+                
+                <!-- O banner promocional da coleção foi removido conforme solicitado -->
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Depoimentos -->
+    <section class="section testimonials">
+        <div class="container">
+            <h2 class="section-title">O Que Dizem Nossos Leitores</h2>
+            <div class="testimonial-grid">
+                
+                <div class="testimonial">
+                    <p class="testimonial-text">"Que produção incrível! Nunca imaginei ver a Bíblia de forma tão épica e envolvente. A qualidade das ilustrações é de tirar o fôlego. Recomendo para todos!"</p>
+                    <p class="testimonial-author">— Carlos Mendes, 28 anos</p>
+                </div>
+
+                <div class="testimonial">
+                    <p class="testimonial-text">"Finalmente um conteúdo que une fé e arte de forma magistral. Minha família toda leu e tivemos conversas profundas sobre espiritualidade. Simplesmente perfeito!"</p>
+                    <p class="testimonial-author">— Pastora Débora Silva</p>
+                </div>
+
+                <div class="testimonial">
+                    <p class="testimonial-text">"Como fã de Mangá e cristão, este é o melhor dos dois mundos! A história é fiel à Bíblia, mas com uma dramaticidade que prende do início ao fim. Já li 3 vezes!"</p>
+                    <p class="testimonial-author">— Rafael Costa, 22 anos</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Garantia -->
+    <section class="guarantee">
+        <div class="container">
+            <div class="guarantee-badge">🛡️</div>
+            <h2>Garantia de 7 Dias</h2>
+            <p style="font-size: 1.3em; max-width: 700px; margin: 20px auto;">Se por qualquer motivo você não ficar satisfeito com o E-book Batalha Celestial, devolvemos 100% do seu investimento em 7 dias. Sem perguntas, sem complicações. Sua satisfação é nossa prioridade!</p>
+        </div>
+    </section>
+
+    <!-- Seção de Perguntas Frequentes (FAQ) -->
+    <section class="section faq">
+        <div class="container">
+            <h2 class="section-title">Perguntas Frequentes</h2>
+            
+            <div class="faq-item">
+                <p class="faq-question">Como recebo o acesso após a compra?</p>
+                <p class="faq-answer">Imediatamente após a confirmação do pagamento na Hotmart, você receberá um email com o link para baixar o E-book Batalha Celestial. O acesso é instantâneo e vitalício!</p>
+            </div>
+
+            <div class="faq-item">
+                <p class="faq-question">Posso ler em qualquer dispositivo?</p>
+                <p class="faq-answer">Sim! Você pode ler no computador, tablet, smartphone ou e-reader. O arquivo é compatível com todos os dispositivos e o acesso é 100% digital.</p>
+            </div>
+
+            <div class="faq-item">
+                <p class="faq-question">Quantas vezes posso ler?</p>
+                <p class="faq-answer">Quantas vezes quiser! Seu acesso é vitalício. Você pode reler sempre que desejar, compartilhar com sua família e aproveitar o conteúdo indefinidamente.</p>
+            </div>
+
+            <div class="faq-item">
+                <p class="faq-question">A história é fiel à Bíblia?</p>
+                <p class="faq-answer">Sim! O E-book Batalha Celestial é baseado nas Escrituras Sagradas, especialmente em passagens como Apocalipse 12:7-9 e Ezequiel 28. A narrativa respeita a autenticidade bíblica enquanto oferece uma perspectiva épica e dramatizada.</p>
+            </div>
+
+            <div class="faq-item">
+                <p class="faq-question">Preciso ter conhecimento bíblico prévio?</p>
+                <p class="faq-answer">Não! O E-book Batalha Celestial é acessível para todos, independentemente do seu conhecimento bíblico. A história é auto-explicativa e envolvente, perfeita para iniciantes e estudiosos da Bíblia.</p>
+            </div>
+
+            <div class="faq-item">
+                <p class="faq-question">E se eu tiver problemas técnicos?</p>
+                <p class="faq-answer">Nossa equipe de suporte está pronta para ajudar 24/7! Entre em contato conosco através do email ou chat e resolveremos qualquer questão rapidamente.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chamada Final para Ação -->
+    <section class="final-cta">
+        <div class="container">
+            <h2>O E-book Batalha Celestial Aguarda Por Você!</h2>
+            <p style="font-size: 1.3em; margin: 20px 0;">Por apenas R$ 19,90, tenha acesso vitalício ao Fascículo 1 desta produção épica. Não deixe para depois!</p>
+            <a href="https://pay.hotmart.com/J103232102S" class="cta-button">SIM, QUERO O E-BOOK AGORA!</a>
+            <p style="margin-top: 30px; opacity: 0.9;">✓ Acesso Imediato | ✓ Garantia de 7 Dias | ✓ Suporte 24/7</p>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 E-book Batalha Celestial. Todos os direitos reservados.</p>
+            <p style="margin-top: 10px;">Transformando vidas através da arte, fé e narrativas épicas ⚡</p>
+            <p style="margin-top: 10px; font-size: 0.8em;">*Este produto é vendido através da plataforma Hotmart. Você receberá acesso digital imediato após a confirmação do pagamento.</p>
+        </div>
+    </footer>
+
+    <!-- Script JavaScript para Efeitos de Conversão -->
+    <script>
+        // Timer de contagem regressiva - Reinicia automaticamente
+        function startTimer() {
+            let hours = 15;
+            let minutes = 37;
+            let seconds = 6;
+            
+            const timerElement = document.getElementById('timer');
+            if (!timerElement) return;
+
+            setInterval(() => {
+                seconds--;
+                if (seconds < 0) {
+                    seconds = 59;
+                    minutes--;
+                    if (minutes < 0) {
+                        minutes = 59;
+                        hours--;
+                        if (hours < 0) {
+                            hours = 15;
+                            minutes = 37;
+                            seconds = 6;
+                        }
+                    }
+                }
+                
+                const h = String(hours).padStart(2, '0');
+                const m = String(minutes).padStart(2, '0');
+                const s = String(seconds).padStart(2, '0');
+                timerElement.textContent = `${h}:${m}:${s}`;
+            }, 1000);
+        }
+
+        // Simula visualizações em tempo real
+        function updateViewers() {
+            const viewers = document.getElementById('viewers');
+            if (!viewers) return;
+
+            let current = Math.floor(Math.random() * (50 - 30 + 1)) + 30;
+            viewers.textContent = current;
+
+            setInterval(() => {
+                const change = Math.random() > 0.5 ? 1 : -1;
+                current = Math.max(30, Math.min(50, current + change));
+                viewers.textContent = current;
+            }, 3000);
+        }
+
+        // Simula vagas restantes diminuindo
+        function updateVagas() {
+            const vagas = document.getElementById('vagas');
+            if (!vagas) return;
+
+            let currentVagas = 18;
+            vagas.textContent = currentVagas;
+            
+            setInterval(() => {
+                if (Math.random() > 0.7 && currentVagas > 5) {
+                    currentVagas--;
+                    vagas.textContent = currentVagas;
+                }
+            }, 30000);
+        }
+
+        // Inicialização
+        document.addEventListener('DOMContentLoaded', function() {
+            startTimer();
+            updateViewers();
+            updateVagas();
+
+            // Scroll suave para seção de produtos
+            const links = document.querySelectorAll('a[href="#produtos"]');
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetElement = document.getElementById('produtos');
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ 
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+
+        // Rastreia cliques nos botões
+        document.querySelectorAll('.buy-button, .cta-button').forEach(button => {
+            button.addEventListener('click', function() {
+                console.log('Botão clicado:', this.textContent);
+            });
+        });
+    </script>
+</body>
+</html>
